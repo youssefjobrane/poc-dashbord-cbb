@@ -1,0 +1,193 @@
+/* Chatbot Banque — theme tokens taken from the Power BI theme + Deneb specs (Chatbot_Banque_-_Direction.json). */
+:root {
+  --c-page: #f6f7f9;
+  --c-card: #ffffff;
+  --c-border: #e5e7eb;
+  --c-grid: #eef0f3;
+  --c-track: #e8ecf2;
+  --c-text: #111827;
+  --c-text-2: #4b5563;
+  --c-text-3: #6b7280;
+  --c-text-4: #9ca3af;
+  --c-blue: #1f6fb2;
+  --c-blue-line: #2f6db5;
+  --c-blue-focus: #2563eb;
+  --c-purple: #6d4fc2;
+  --c-navy: #0f1b3d;
+  --c-good: #2e7d32;
+  --c-good-bg: #e8f5e9;
+  --c-warn: #b26a00;
+  --c-warn-bg: #fff4de;
+  --c-neutral: #b8860b;
+  --c-bad: #c62828;
+  --c-bad-bg: #fdecec;
+  --c-docs: #4caf7d;
+  --radius: 10px;
+  --gap: 12px;
+  --gutter: 31px;
+  --font: 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--c-page);
+  color: var(--c-text);
+  font: 12px/1.35 var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--c-blue-focus);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------- cards */
+.card {
+  background: var(--c-card);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-text);
+  white-space: nowrap;
+}
+
+.card-sub {
+  font-size: 10px;
+  color: var(--c-text-4);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-body {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+
+/* ---------------------------------------------------------------- page grids */
+.page {
+  display: grid;
+  gap: var(--gap);
+}
+
+.row {
+  display: grid;
+  gap: var(--gap);
+}
+
+@media (max-width: 1100px) {
+  .row {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ---------------------------------------------------------------- tones & badges */
+.good {
+  color: var(--c-good);
+}
+.bad {
+  color: var(--c-bad);
+}
+.muted {
+  color: var(--c-text-4);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  &.alert {
+    background: var(--c-bad-bg);
+    color: var(--c-bad);
+  }
+  &.watch {
+    background: var(--c-warn-bg);
+    color: var(--c-warn);
+  }
+  &.ok {
+    background: var(--c-good-bg);
+    color: var(--c-good);
+  }
+}
+
+/* ---------------------------------------------------------------- skeletons */
+.skeleton {
+  border-radius: 6px;
+  background: linear-gradient(90deg, #eef0f3 0%, #f7f8fa 40%, #eef0f3 80%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}
+
+/* ---------------------------------------------------------------- tooltip (HTML widgets) */
+[data-tip] {
+  position: relative;
+}
+[data-tip]:hover::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 6px);
+  transform: translateX(-50%);
+  background: #fff;
+  color: var(--c-text);
+  border: 1px solid var(--c-border);
+  box-shadow: 0 4px 12px rgb(17 24 39 / 12%);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 400;
+  white-space: pre;
+  z-index: 10;
+  pointer-events: none;
+}
