@@ -12,5 +12,10 @@ export const routes: Routes = [
     title: 'Métiers & thématiques — Chatbot Banque',
     loadComponent: () => import('./features/metiers/metiers-page').then((m) => m.MetiersPage),
   },
+  {
+    path: 'docs',
+    title: 'Documentation API & graphiques — Chatbot Banque',
+    loadComponent: () => import('./features/docs/docs-page').then((m) => m.DocsPage),
+  },
   { path: '**', redirectTo: 'pilotage' },
 ];
